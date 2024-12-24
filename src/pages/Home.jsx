@@ -3,6 +3,7 @@ import HeroImage from '../assets/hero-image.jpg'
 import Search from '../components/Search'
 import TrendingProducts from '../components/TrendingProducts';
 import InfoSection from '../components/InfoSection';
+import Login from '../pages/Login'
 const Home = () => {
   return (
     <div>
