@@ -9,6 +9,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Product from './pages/products';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -23,7 +24,8 @@ function App() {
           <Route path="/cart" element={<Cart/>}/>
           {/* <Route path="/checkout" element={<Checkout />} /> */}
           <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/products" element={<Product />} />
         </Routes>
         <Footer />
       </Router>
