@@ -1,15 +1,19 @@
 import React from 'react';
-
+import HeroImage from '../assets/hero-image.jpg'
+import Search from '../components/Search'
+import TrendingProducts from '../components/TrendingProducts';
+import InfoSection from '../components/InfoSection';
 const Home = () => {
   return (
-    <div className="min-h-screen bg-gray-100">
-      <header className="bg-blue-600 text-white p-4">
-        <h1 className="text-2xl font-bold">PrimeCart</h1>
-      </header>
-      <main className="p-6">
-        <h2 className="text-xl font-semibold">Welcome to PrimeCart</h2>
-        <p>Browse our amazing products!</p>
-      </main>
+    <div>
+    <div className="flex justify-end lg:p-6">
+    	<Search/>
+    </div>
+    <div>
+      <img src={HeroImage} alt="home page hero image" className=" rounded-t-[50px] p-4 "/>
+    </div>
+    <TrendingProducts className="lg:p-6"/>
+    <InfoSection/>
     </div>
   );
 };

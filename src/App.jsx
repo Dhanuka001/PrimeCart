@@ -12,7 +12,7 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
+    <div className="px-8 py-2">
       <Router>
         <Header/>
         <Routes>
@@ -23,7 +23,7 @@ function App() {
         </Routes>
         <Footer />
       </Router>
-    </>
+    </div>
   )
 }
 
