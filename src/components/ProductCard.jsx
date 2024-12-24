@@ -42,7 +42,7 @@ const ProductCard = ({ product }) => {
           {product.description}
         </p>
         {/* Add to Cart Button */}
-        <button className="w-full mt-4 flex items-center justify-center bg-black text-white py-2 rounded-lg shadow-md hover:bg-gray-800 hover:shadow-lg transition">
+        <button className="w-full mt-4 flex items-center justify-center bg-black text-white py-2 rounded-lg shadow-md hover:bg-violet-600 hover:shadow-lg transition">
           <FaShoppingCart className="mr-2" />
           Add to Cart
         </button>

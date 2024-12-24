@@ -71,7 +71,7 @@ const TrendingProducts = () => {
   const settings = {
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 5,
     slidesToScroll: 1,
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
@@ -85,7 +85,7 @@ const TrendingProducts = () => {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
         },
       },
     ],
@@ -93,12 +93,12 @@ const TrendingProducts = () => {
 
   return (
     <div className="px-4 py-24">
-      <h2 className="flex justify-center text-2xl font-bold text-gray-800 mb-6">
+      <h2 className="flex justify-center text-3xl font-bold text-gray-800 mb-6">
         Trending Products
       </h2>
       <Slider {...settings}>
         {trendingProducts.map((product) => (
-          <div key={product.id} className="p-4">
+          <div key={product.id} className="p-4 ">
             <ProductCard product={product} />
           </div>
         ))}

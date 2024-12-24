@@ -8,7 +8,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="w-full py-4 shadow-sm">
+    <header className="w-full py-3 shadow-sm">
       <div className="container mx-auto flex items-center justify-between px-4">
         {/* Logo Section */}
         <div className="flex items-center space-x-4">
@@ -27,11 +27,11 @@ const Header = () => {
           <Link to="/products" className="hover:text-violet-600 font-medium ">
             Products
           </Link>
-          <Link to="/favorites" className="hover:text-violet-600 font-medium flex items-center">
-            Favorites <FaRegHeart className="ml-2" />
+          <Link to="/favorites" className="hover:text-violet-600 font-medium flex gap-2 items-center">
+            <FaRegHeart className="ml-2" /> Favorites 
           </Link>
-          <Link to="/cart" className="hover:text-violet-600 flex font-medium  items-center">
-            Cart <IoCartOutline className="ml-2 text-xl" />
+          <Link to="/cart" className="hover:text-violet-600 flex gap-2 font-medium  items-center">
+             <IoCartOutline className="ml-2 text-xl" /> Cart
           </Link>
         </nav>
           <Link
@@ -79,11 +79,11 @@ const Header = () => {
         <Link to="/products" className="block hover:text-violet-600  text-center font-medium ">
           Products
         </Link>
-        <Link to="/favorites" className="flex items-center hover:text-violet-600  text-center font-medium ">
-          Favorites <FaRegHeart className="ml-2" />
+        <Link to="/favorites" className="flex gap-2 items-center hover:text-violet-600  text-center font-medium ">
+           <FaRegHeart className="ml-2" /> Favorites
         </Link>
-        <Link to="/cart" className="flex items-center hover:text-violet-600 text-center font-medium ">
-          Cart <IoCartOutline className="ml-2 text-xl" />
+        <Link to="/cart" className="flex gap-2 items-center hover:text-violet-600 text-center font-medium ">
+           <IoCartOutline className="ml-2 text-xl" /> Cart
         </Link>
         <Link
           to="/login"
