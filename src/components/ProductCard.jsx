@@ -25,12 +25,17 @@ const ProductCard = ({ product, onFavoriteToggle }) => {
       setIsFavorite(previousState); // Revert to the previous state on failure
     }
   };
+  const productImage =
+  product.images && product.images.length > 0
+    ? product.images[0].imageUrl
+    : "uploads/placeholder1.png";
 
+console.log("Product Image URL:", productImage);
   return (
     <div className="relative max-w-sm bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transform hover:scale-105 transition-transform duration-300">
       {/* Product Image */}
       <img
-        src={`http://localhost:5000/uploads/${product.image.split('/').pop()}`}
+        src={`http://localhost:5000/${productImage}`}
         alt={product.title}
         className="w-full h-48 object-cover"
       />
