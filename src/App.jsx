@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Product from './pages/products';
+import FavoriteProducts from './pages/favoriteProducts';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -26,6 +27,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/products" element={<Product />} />
+          <Route path="/favorites" element={<FavoriteProducts />} />
         </Routes>
         <Footer />
       </Router>
