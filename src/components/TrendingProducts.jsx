@@ -1,52 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import ProductCard from "./ProductCard";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import axios from "axios";
 
 const TrendingProducts = () => {
-  // Mock Product Data
-  const trendingProducts = [
-    {
-      id: 1,
-      title: "Modern Wireless Headphones",
-      price: 99.99,
-      rating: 4,
-      reviews: 120,
-      image: "https://freshnrebel.com/media/50/5f/39/1731509513/freshnrebel-hover-clam-junior.jpg",
-      description:
-        "High-quality wireless headphones with noise cancellation, long battery life, and a comfortable fit.",
-    },
-    {
-      id: 2,
-      title: "Smartphone with AMOLED Display",
-      price: 699.99,
-      rating: 5,
-      reviews: 200,
-      image: "https://freshnrebel.com/media/50/5f/39/1731509513/freshnrebel-hover-clam-junior.jpg",
-      description:
-        "Next-gen smartphone with stunning display, powerful processor, and long-lasting battery.",
-    },
-    {
-      id: 3,
-      title: "Ergonomic Office Chair",
-      price: 199.99,
-      rating: 4,
-      reviews: 80,
-      image: "https://freshnrebel.com/media/50/5f/39/1731509513/freshnrebel-hover-clam-junior.jpg",
-      description:
-        "Comfortable office chair with lumbar support and adjustable height.",
-    },
-    {
-      id: 4,
-      title: "Gaming Laptop",
-      price: 1199.99,
-      rating: 5,
-      reviews: 150,
-      image: "https://freshnrebel.com/media/50/5f/39/1731509513/freshnrebel-hover-clam-junior.jpg",
-      description:
-        "High-performance gaming laptop with top-tier graphics and cooling system.",
-    },
-  ];
+  const [trendingProducts, setTrendingProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Fetch Trending Products
+  useEffect(() => {
+    const fetchTrendingProducts = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/api/product/trending");
+        setTrendingProducts(response.data); // Assuming API returns an array of products
+        setLoading(false);
+      } catch (err) {
+        console.error("Error fetching trending products:", err);
+        setError(err.message || "Error fetching trending products");
+        setLoading(false);
+      }
+    };
+
+    fetchTrendingProducts();
+  }, []);
 
   // Custom Arrows for the Slider
   const CustomPrevArrow = ({ onClick }) => (
@@ -85,11 +63,19 @@ const TrendingProducts = () => {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
         },
       },
     ],
   };
+
+  if (loading) {
+    return <div className="text-center text-gray-600">Loading Trending Products...</div>;
+  }
+
+  if (error) {
+    return <div className="text-center text-red-500">Error: {error}</div>;
+  }
 
   return (
     <div className="px-4 py-24">
@@ -98,7 +84,7 @@ const TrendingProducts = () => {
       </h2>
       <Slider {...settings}>
         {trendingProducts.map((product) => (
-          <div key={product.id} className="p-4 ">
+          <div key={product.id} className="p-4">
             <ProductCard product={product} />
           </div>
         ))}
