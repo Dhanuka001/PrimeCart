@@ -1,12 +1,27 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoCartOutline } from "react-icons/io5";
 import { FaRegHeart } from "react-icons/fa";
 import Products from "../pages/products";
+import { useEffect } from "react";
+import { FiLogOut } from "react-icons/fi";
 
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setIsLoggedIn(!!token);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setIsLoggedIn(false);
+    navigate("/");
+  };
 
   return (
     <header className="w-full py-3 shadow-sm">
@@ -33,20 +48,32 @@ const Header = () => {
           </Link>
           <Link to="/cart" className="hover:text-violet-600 flex gap-2 font-medium  items-center">
              <IoCartOutline className="ml-2 text-xl" /> Cart
-          </Link>
+          </Link> 
+          {isLoggedIn ? (
+            <button
+              onClick={handleLogout}
+              className="w-24 text-center py-2 text-white bg-red-500 rounded-xl font-medium shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] hover:bg-red-600 flex items-center justify-center gap-2"
+            >
+              Logout <FiLogOut /> 
+            </button>
+          ) : (
+            <Link
+              to="/login"
+              className="w-24 text-center py-2 text-gray-700 bg-gray-100 rounded-xl font-medium shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px]"
+            >
+              Login
+            </Link>
+          )}
+          {!isLoggedIn && (
+            <Link
+              to="/register"
+              className="w-24 py-2 text-center text-white bg-black rounded-xl shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] font-medium hover:bg-gray-900"
+            >
+              Register
+            </Link>
+          )}
         </nav>
-          <Link
-            to="/login"
-            className="w-24 text-center py-2 text-gray-700 bg-gray-100 rounded-xl  font-medium shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px]"
-          >
-            Login
-          </Link>
-          <Link
-            to="/register"
-            className="w-24 py-2 text-center text-white bg-black rounded-xl shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] font-medium hover:bg-gray-900"
-          >
-            Register
-          </Link>
+       
         </div>
 
         {/* Mobile Menu Button */}
